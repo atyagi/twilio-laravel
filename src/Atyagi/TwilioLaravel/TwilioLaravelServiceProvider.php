@@ -1,6 +1,7 @@
 <?php namespace Atyagi\TwilioLaravel;
 
 use Illuminate\Support\ServiceProvider;
+use Services_Twilio;
 
 class TwilioLaravelServiceProvider extends ServiceProvider {
 
@@ -18,7 +19,9 @@ class TwilioLaravelServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('atyagi/twilio-laravel');
+        $namespace = 'twilio-laravel';
+        $path = __DIR__ . '/../..';
+		$this->package('atyagi/twilio-laravel', $namespace, $path);
 	}
 
 	/**
@@ -28,7 +31,13 @@ class TwilioLaravelServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+        $this->app['twilio'] = $this->app->share(function($app) {
+            $client = new Services_Twilio(
+                $this->app->make('config')->get('twilio-laravel::sid'),
+                $this->app->make('config')->get('twilio-laravel::token')
+            );
+            return new TwilioClient($app, $client);
+        });
 	}
 
 	/**
