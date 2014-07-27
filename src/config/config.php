@@ -11,7 +11,7 @@ return array(
 	|
 	*/
 
-    'sid' => 'AC09b4c357c6f5da870c7f21fa289543af',
+    'sid' => '',
 
 
     /*
@@ -22,7 +22,7 @@ return array(
 	| The Access Token provided by Twilio
 	|
 	*/
-    'token' => '5b9043d19c595a3f570cd3b51618115d',
+    'token' => '',
 
 
     /*
@@ -33,7 +33,7 @@ return array(
 	| A valid "From Number" from Twilio in the format +1XXXXXXXXXX
 	|
 	*/
-    'from_number' => '+12622924754',
+    'from_number' => '',
 
 
 );
